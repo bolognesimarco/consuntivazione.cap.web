@@ -5,15 +5,24 @@
 <title>CAP - Fideuram Vita</title>
 </head>
 <body>
-	<a href="http://jquery.com/">jQuery</a>
 	<script src="js/jquery-1.11.1.js"></script>
 	<script>
 		$(document).ready(function() {
-			$("a").click(function(event) {
-				alert("The link will no longer take you to jquery.com");
-				event.preventDefault();
+			alert("in ready....");
+			$.ajax({
+				url : "/timesheet/report",
+				data : {
+					workerId : 1,
+					month : 7,
+					year : 2014
+				},
+				success : function(data) {
+					$("#mydiv").html("<strong>" + data + "</strong> degrees");
+				}
 			});
+			alert("out ready....");
 		});
 	</script>
+	<div id="mydiv"></div>
 </body>
 </html>
