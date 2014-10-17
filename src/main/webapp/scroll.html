@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>scroll demo</title>
+  <style>
+  div {
+    color: blue;
+    height: 150px;
+    overflow: scroll;
+  }
+  p {
+    color: green;
+  }
+  span {
+    color: red;
+    display: none;
+  }
+  </style>
+  <script src="js/jquery-1.11.1.js"></script>
+</head>
+<body >
+ 
+<div id="uno">Try scrolling the iframe.</div>
+<div id="due">
+
+</div>
+<p id="pp">Paragraph - <span id="spanpp">Scroll happened!</span></p>
+<p id="ppp">Paragraph - <span>Scroll happened!</span></p> 
+<script>
+$( "#pp" ).clone().appendTo( $('#uno') );
+$( "#pp" ).clone().appendTo( $('#uno') );
+$( "#pp" ).clone().appendTo( $('#uno') );
+$( "#pp" ).clone().appendTo( $('#uno') );
+$( "#pp" ).clone().appendTo( $('#uno') );
+$( "#pp" ).clone().appendTo( $('#uno') );
+
+$( "#ppp" ).clone().appendTo( $('#due') );
+$( "#ppp" ).clone().appendTo( $('#due') );
+$( "#ppp" ).clone().appendTo( $('#due') );
+$( "#ppp" ).clone().appendTo( $('#due') );
+$( "#ppp" ).clone().appendTo( $('#due') );
+$( "#ppp" ).clone().appendTo( $('#due') );
+
+$('#uno').scroll(function() {
+  $( "#spanpp" ).css( "display", "inline" ).fadeOut( "slow" );
+  $('#due').scroll();
+});
+</script>
+ 
+</body>
+</html>

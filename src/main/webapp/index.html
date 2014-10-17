@@ -3,26 +3,157 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>CAP - Fideuram Vita</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<script src="js/jquery-1.11.1.js"></script>
 	<script>
+		function reportSorter(a,b){
+			if(a.order.id==b.order.id){ 
+				return a.timeSheet.endDate-b.timeSheet.endDate;
+			}else{
+				return a.order.id-b.order.id;
+			}
+		}
+		
+		function reportdiv(divcontent){
+			var div = $(document.createElement('div'));
+			var table = $(document.createElement('table'));
+			var rowgiorni = $(document.createElement('tr'));
+			rowgiorni.append($(document.createElement('td')).text("Giorni:"));
+			rowgiorni.append($(document.createElement('td')).text(divcontent.days));
+			var roweuro = $(document.createElement('tr'));
+			var tdeuro = $(document.createElement('td')).text("Euro:");
+			tdeuro.attr('class','label');
+			roweuro.append(tdeuro);
+			
+			roweuro.append($(document.createElement('td')).text((divcontent.days*divcontent.order.rate)));
+			var rowinvoice = $(document.createElement('tr'));
+			rowinvoice.append($(document.createElement('td')).text("Fattura"));
+			if(divcontent.invoice!=null){
+				rowinvoice.append($(document.createElement('td')).text(divcontent.invoice.id+" del "+divcontente.invoice.date));
+			}else{
+				var checkbox = $(document.createElement('input'));
+				checkbox.attr('type','checkbox');
+				checkbox.attr('name','toinvoice');
+				checkbox.attr('value',divcontent.id);
+				rowinvoice.append($(document.createElement('td')).append(checkbox));
+			}
+			
+			table.append(rowgiorni);
+			table.append(roweuro);
+			table.append(rowinvoice);
+			div.append(table);
+			return div;
+		}
+		var mesiDesc = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+	
 		$(document).ready(function() {
-			alert("in ready....");
+			
 			$.ajax({
-				url : "/timesheet/report",
-				data : {
-					workerId : 1,
-					month : 7,
+				url : "/consuntivazione.cap.web/timesheet/report",
+				type: "GET",
+				 data : {
+					workerId : 0,
+					month : 0,
 					year : 2014
-				},
+				}, 
 				success : function(data) {
-					$("#mydiv").html("<strong>" + data + "</strong> degrees");
-				}
+					
+					
+					var ordiniid = [];
+					var ordini = [];
+					var mesi = [];
+					data.sort(reportSorter);
+					
+					$.each(data, function() {
+						
+						if($.inArray(this.order.id, ordiniid)==-1){	
+							ordiniid.push(this.order.id);
+							ordini.push(this.order);
+						}
+						if($.inArray(this.timeSheet.endDate, mesi)==-1){
+							mesi.push(this.timeSheet.endDate);
+						}
+					});
+					mesi.sort();
+					
+					var table = $(document.createElement('table'));
+					table.attr('border','1');
+					
+					var firstrow = $(document.createElement('tr'));
+					firstrow.attr('class','columnheader');
+					table.append(firstrow);
+					var emptycell1 = $(document.createElement('td'));
+					firstrow.append(emptycell1);
+					
+					$.each(mesi, function(i,v){
+						var data = new Date(v);
+						var newheadercell = $(document.createElement('td')).text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
+						firstrow.append(newheadercell);
+					});
+					var residuoheader = $(document.createElement('td')).text('Residuo');
+					firstrow.append(residuoheader);
+										
+					$.each(ordini, function(i,v){
+						var newrow = $(document.createElement('tr'));
+						var rowheader = $(document.createElement('td'));
+						rowheader.attr('class','rowheader');
+						var newrowheader = rowheader.text(v.worker.name);
+						
+						table.append(newrow);
+						newrow.append(newrowheader);
+						
+						var reportentryordine = true;
+						//var numerocelleappese = 0;
+						while(reportentryordine && data.length>0){
+							if(data[0].order.id==v.id){
+								$.each(mesi, function(im,vm){
+									if(data.length>0 && data[0].timeSheet.endDate==vm){
+										var tdcell = $(document.createElement('td'));
+										tdcell.append(reportdiv(data[0]));
+										newrow.append(tdcell);
+										data.shift();
+									}else{
+										newrow.append($(document.createElement('td')));
+									}
+								});
+								
+							}else{
+								reportentryordine=false;
+							}
+						}
+						
+						
+						var residuo = $(document.createElement('td')).text(v.leftDays);
+						newrow.append(residuo);
+						/* 
+						var emptyc1 = $(document.createElement('td'));
+						newrow.append(emptyc1);
+						var emptyc2 = $(document.createElement('td'));
+						newrow.append(emptyc2);
+						var emptyc3 = $(document.createElement('td'));
+						newrow.append(emptyc3);
+						var emptyc4 = $(document.createElement('td'));
+						newrow.append(emptyc4); */
+						
+					});
+					
+					
+					
+					$("#mydiv").append(table);
+					//mydiv.html(nuovodiv);
+					alert('fine');
+				},
+				error:function(jqXHR,status,er) { 
+					        alert("jqXHR: "+jqXHR+" status: "+status+" er:"+er);
+					    }
 			});
-			alert("out ready....");
+			
 		});
 	</script>
 	<div id="mydiv"></div>
+	
+	
 </body>
 </html>
