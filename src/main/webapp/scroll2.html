@@ -20,6 +20,21 @@ var ordini = [
               {"worker":{"name":"Bruni2"}},
               {"worker":{"name":"Gnignera2"}}
               ];
+              
+              
+(function ( $ ) {
+	$.fn.miotable = function(options){
+		var settings = $.extend({
+			
+		}, options);
+		
+		
+		
+	};
+}(jQuery));
+              
+              
+              
 $(document).ready(function(){
 	var table = $(document.createElement('table'));
 	$.each(ordini, function(i, item){
@@ -30,27 +45,89 @@ $(document).ready(function(){
 		table.append(tr);
 	});
 	$("#rowheader").append(table);
+	
+	
+	$("#mainscroller").scroll(function(event){
+		console.log(event.currentTarget.scrollLeft);
+		console.log( "event object:" );
+	    console.dir( event );
+	    document.getElementById("aaa").scrollLeft = event.currentTarget.scrollLeft;
+	    document.getElementById("bbb").scrollLeft = event.currentTarget.scrollLeft;
+	});
+	
 });
 
 </script>
 
 
-	<div style="height: 100px; overflow-y: scroll">
-		<div style="height: 100px;">
-			<div style="display: table;">
-				<div style="display: table-row;">
-					<div id="rowheader" style="display: table-cell; width: 100px;"></div>
-					
-					<div id="content" style="display: table-cell;"></div>
-					
-					<div id="rowfooter" style="display: table-cell; width: 100px;"></div>
+	<div style="height: 25px; display: table; border: solid 1px red;"> 
+		<div style="height: 25px; display: table-row;">
+			<div style="display: table-cell;">
+			
+				<div style="display: table">
+					<div style="display: table-row">
+						<div style="display: table-cell">
+							<div style="display: table-cell; width: 100px; border: solid 1px green;"></div>
+							<div style="display: table-cell; border: solid 1px cyan;">
+								<div id="aaa" style="width: 200px; overflow-x: hidden;">
+									12345678901234567890123456789012345678901234567890
+								</div>
+							</div>
+							<div style="display: table-cell; width: 100px; border: solid 1px magenta;"></div>
+						</div>
+					</div>
 				</div>
+				
 			</div>
 		</div>
-	</div>
+		
+		
+		<div style="height: 100px; display: table-row;">		
+			<div style="display: table-cell; border: solid 1px yellow;">
+			
+				<div style="height: 100px; overflow-y: scroll">
+					<div style="height: 100px;">
+						<div style="display: table;">
+							<div style="display: table-row;">
+								<div id="rowheader" style="display: table-cell; width: 100px;"></div>
+								<div id="content" style="display: table-cell;">
+									<div id="bbb" style="width: 200px; overflow-x: hidden;">
+										12345678901234567890123456789012345678901234567890
+									</div></div>
+								<div id="rowfooter" style="display: table-cell; width: 100px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div style="height: 25px; display: table-row;">
+			<div style="display: table-cell;">
+			
+				<div style="display: table">
+					<div style="display: table-row">
+						<div style="display: table-cell">
+							<div style="display: table-cell; width: 100px; border: solid 1px green;"></div>
+							<div style="display: table-cell; border: solid 1px cyan;">
+								<div id="mainscroller" style="width: 200px; overflow-x: scroll">
+									<div style="width: 200px;">
+										
+
+									</div>
+								</div>
+							</div>
+							<div style="display: table-cell; width: 100px; border: solid 1px magenta;"></div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
 	
-	
-	
+	</div>	
 	
 </body>
 </html>
