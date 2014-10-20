@@ -4,6 +4,26 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <script src="js/jquery-1.11.1.js"></script>
+<style>
+	.mt{
+		display: table;
+		border: solid 1px red;
+	}
+	.mth{
+		display: table-row;
+	}
+	.mth_ec{
+		display: table-cell;
+		border: solid 1px green;
+		width: 100px;
+	}
+	.mth_hc{
+		display: table-cell;
+		border: solid 1px magenta;
+		width: 200px; /* temp */
+	}
+	
+</style>
 </head>
 <body>
 
@@ -24,11 +44,34 @@ var ordini = [
               
 (function ( $ ) {
 	$.fn.miotable = function(options){
+
 		var settings = $.extend({
 			
 		}, options);
 		
+		var table = $(document.createElement('div'));
+		table.attr('class', 'mt');
 		
+		var header = $(document.createElement('div'));
+		header.attr('class', 'mth');
+		table.append(header);
+		
+		var leftemptycell = $(document.createElement('div'));
+		leftemptycell.attr('class', 'mth_ec');
+		leftemptycell.text("lec");
+		header.append(leftemptycell);
+		
+		var headercell = $(document.createElement('div'));
+		headercell.attr('class', 'mth_hc');
+		headercell.text("hc");
+		header.append(headercell);
+		
+		var rightemptycell = $(document.createElement('div'));
+		rightemptycell.attr('class', 'mth_ec');
+		rightemptycell.text("rec");
+		header.append(rightemptycell);
+		
+		this.append(table);
 		
 	};
 }(jQuery));
@@ -55,12 +98,14 @@ $(document).ready(function(){
 	    document.getElementById("bbb").scrollLeft = event.currentTarget.scrollLeft;
 	});
 	
+	$("#miotablecontainer").miotable();
+	
 });
 
 </script>
 
 
-	<div style="height: 25px; display: table; border: solid 1px red;"> 
+	<div style="display: table; border: solid 1px red;"> 
 		<div style="height: 25px; display: table-row;">
 			<div style="display: table-cell;">
 			
@@ -114,8 +159,7 @@ $(document).ready(function(){
 							<div style="display: table-cell; border: solid 1px cyan;">
 								<div id="mainscroller" style="width: 200px; overflow-x: scroll">
 									<div style="width: 200px;">
-										
-
+										12345678901234567890123456789012345678901234567890
 									</div>
 								</div>
 							</div>
@@ -128,6 +172,8 @@ $(document).ready(function(){
 		</div>
 	
 	</div>	
+	
+	<div id="miotablecontainer"></div>
 	
 </body>
 </html>
