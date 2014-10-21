@@ -5,29 +5,134 @@
 <title>Insert title here</title>
 <script src="js/jquery-1.11.1.js"></script>
 <style>
-	.mt{
+	.mt_maindiv{
 		display: table;
-		border: solid 1px red;
 	}
-	.mth{
+		.mt_header{
+			display: table-row;
+		}
+			.mt_headercell{
+				display: table-cell;
+				border: solid 1px magenta;
+			}
+				.mt_hc_content{
+					display: table;
+				}
+					.mt_hc_content_row{
+						display: table-row;
+					}
+						.mt_hc_content_left{
+							display: table-cell;
+							width: 100px;
+						}
+						.mt_hc_content_center{
+							display: table-cell;
+							overflow-x: hidden;
+							border: solid 1px green;
+						}
+							.mt_hc_content_center_table{
+								display: table;
+							}
+								.mt_hc_content_center_table_row{
+									display: table_row;
+								}
+									.mt_hc_content_center_table_cell{
+										display: table-cell;
+										width: 100px; /* TEMP */
+									}
+						.mt_hc_content_right{
+							display: table-cell;
+							width: 100px;
+							border: solid 1px red;
+						}
+						
+	
+	.mt_content{
+		display: table-row;
+		max-height: 300px;
+	}
+	.mt_contentcell{
+		display: table-cell;
+		overflow-y: scroll;
+	}
+	.mt_cc_content{
+		display: table;
+	}
+	.mt_cc_content_row{
 		display: table-row;
 	}
-	.mth_ec{
+	.mt_cc_content_left{
 		display: table-cell;
-		border: solid 1px green;
 		width: 100px;
 	}
-	.mth_hc{
+	.mt_cc_content_center{
 		display: table-cell;
-		border: solid 1px magenta;
-		width: 200px; /* temp */
+		max-width: 600px;
+		overflow-x: hidden;
+	}
+	.mt_cc_content_center_table{
+		display: table;
+	}
+		.mt_cc_content_center_table_row{
+			display: table_row;
+		}
+			.mt_cc_content_center_table_cell{
+				display: table-cell;
+				width: 100px; /* TEMP */
+			}
+	.mt_cc_content_right{
+		display: table-cell;
+		width: 100px;
 	}
 	
+	
+	
+	.mt_footer{
+		display: table-row;
+		height: 25px;
+	}
+	.mt_footercell{
+		display: table-cell;
+	}
+	.mt_fc_content{
+		display: table;
+	}
+	.mt_fc_content_row{
+		display: table-row;
+	}
+	.mt_fc_content_left{
+		display: table-cell;
+		width: 100px;
+	}
+	.mt_fc_content_center{
+		display: table-cell;
+		max-width: 600px;
+		overflow-x: scroll;
+	}
+	.mt_fc_content_center_table{
+		display: table;
+	}
+		.mt_fc_content_center_table_row{
+			display: table_row;
+		}
+			.mt_fc_content_center_table_cell{
+				display: table-cell;
+				width: 100px; /* TEMP */
+			}
+	.mt_fc_content_right{
+		display: table-cell;
+		width: 100px;
+	}
 </style>
 </head>
 <body>
 
 <script type="text/javascript">
+
+
+
+
+
 
 var mesi = [{"data":new Date(2014, 6, 30)},{"data":new Date(2014, 7, 31)},{"data":new Date(2014, 8, 31)}];
 var ordini = [
@@ -40,39 +145,218 @@ var ordini = [
               {"worker":{"name":"Bruni2"}},
               {"worker":{"name":"Gnignera2"}}
               ];
-              
+
+var reportentries = [
+{"id":1,"days":13.5,"invoice":{"id":10, "date":1234567890},"timeSheet":{"id":21,"endDate":1409436000000,"days":2.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":2,"days":3.5,"invoice":{"id":11, "date":1234567890},"timeSheet":{"id":22,"endDate":1406757600000,"days":3.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":3,"days":1.5,"invoice":{"id":12, "date":1234567890},"timeSheet":{"id":23,"endDate":1412028000000,"days":1.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":4,"days":23.5,"invoice":{"id":31, "date":1234567890},"timeSheet":{"id":34,"endDate":1409436000000,"days":4.5,"suspendedDays":10},"order": {"id":42, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":5,"days":10.5,"invoice":{"id":14, "date":1234567890},"timeSheet":{"id":24,"endDate":1406757600000,"days":6.5,"suspendedDays":10},"order": {"id":43, "leftDays":2, "rate":310.00, "worker":{"name":"Gnignera"}}},
+{"id":6,"days":4.5,"invoice":{"id":15, "date":1234567890},"timeSheet":{"id":24,"endDate":1412028000000,"days":7.5,"suspendedDays":10},"order": {"id":44, "leftDays":2, "rate":310.00, "worker":{"name":"Barigelli"}}},
+{"id":7,"days":6.5,"invoice":{"id":16, "date":1234567890},"timeSheet":{"id":24,"endDate":1409436000000,"days":2.5,"suspendedDays":10},"order": {"id":45, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":8,"days":2.5,"invoice":{"id":17, "date":1234567890},"timeSheet":{"id":21,"endDate":1406757600000,"days":4.5,"suspendedDays":10},"order": {"id":45, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":9,"days":22.5,"invoice":{"id":18, "date":1234567890},"timeSheet":{"id":12,"endDate":1412028000000,"days":5.5,"suspendedDays":10},"order": {"id":46, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}}
+];
+
+
+var mesiDesc = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+function reportSorter(a,b){
+	if(a.order.id==b.order.id){ 
+		return a.timeSheet.endDate-b.timeSheet.endDate;
+	}else{
+		return a.order.id-b.order.id;
+	}
+}
+
               
 (function ( $ ) {
-	$.fn.miotable = function(options){
+	$.fn.miotable = function(data, options){
 
 		var settings = $.extend({
 			
 		}, options);
 		
-		var table = $(document.createElement('div'));
-		table.attr('class', 'mt');
 		
-		var header = $(document.createElement('div'));
-		header.attr('class', 'mth');
-		table.append(header);
+		var table = $(document.createElement('div'));//table
+		table.attr('class','mt_maindiv');		
 		
-		var leftemptycell = $(document.createElement('div'));
-		leftemptycell.attr('class', 'mth_ec');
-		leftemptycell.text("lec");
-		header.append(leftemptycell);
+			var headerrow = $(document.createElement('div'));//table-row
+			headerrow.attr('class','mt_header');
+			table.append(headerrow);
+				var headercell = $(document.createElement('div'));//table-cell
+				headercell.attr('class','mt_headercell');
+				headerrow.append(headercell);
+					var hc_content = $(document.createElement('div'));//table
+					hc_content.attr('class','mt_hc_content');
+					headercell.append(hc_content);
+						var hc_content_row = $(document.createElement('div'));//table-row
+						hc_content_row.attr('class','mt_hc_content_row');
+						hc_content.append(hc_content_row);
+							var hc_content_left = $(document.createElement('div'));//table-cell
+							hc_content_left.attr('class','mt_hc_content_left');
+							hc_content_row.append(hc_content_left);
+							var hc_content_center = $(document.createElement('div'));//table-cell
+							hc_content_center.attr('class','mt_hc_content_center');
+							hc_content_row.append(hc_content_center);
+								var hc_content_center_table = $(document.createElement('div'));//table
+								hc_content_center_table.attr('class','mt_hc_content_center_table');
+								hc_content_center.append(hc_content_center_table);
+									var hc_content_center_table_row = $(document.createElement('div'));//table-row
+									hc_content_center_table_row.attr('class','mt_hc_content_center_table_row');
+									hc_content_center_table.append(hc_content_center_table_row);
+							var hc_content_right = $(document.createElement('div'));//table-cell
+							hc_content_right.attr('class','mt_hc_content_right');
+							hc_content_row.append(hc_content_right);
 		
-		var headercell = $(document.createElement('div'));
-		headercell.attr('class', 'mth_hc');
-		headercell.text("hc");
-		header.append(headercell);
 		
-		var rightemptycell = $(document.createElement('div'));
-		rightemptycell.attr('class', 'mth_ec');
-		rightemptycell.text("rec");
-		header.append(rightemptycell);
+			var contentrow = $(document.createElement('div'));//table-row
+			contentrow.attr('class','mt_content');
+			table.append(contentrow);
+				var contentcell = $(document.createElement('div'));//table-cell
+				contentcell.attr('class','mt_contentcell');
+				contentrow.append(contentcell);
+					var cc_content = $(document.createElement('div'));//table
+					cc_content.attr('class','mt_cc_content');
+					contentcell.append(cc_content);
+						var cc_content_row = $(document.createElement('div'));//table-row
+						cc_content_row.attr('class','mt_cc_content_row');
+						cc_content.append(cc_content_row);
+		
+							var cc_content_left = $(document.createElement('div'));//table-cell
+							cc_content_left.attr('class','mt_cc_content_left');
+							cc_content_row.append(cc_content_left);
+		
+							var cc_content_center = $(document.createElement('div'));//table-cell
+							cc_content_center.attr('class','mt_cc_content_center');
+							cc_content_row.append(cc_content_center);
+								var cc_content_center_table = $(document.createElement('div'));//table
+								cc_content_center_table.attr('class','mt_cc_content_center_table');
+								cc_content_center.append(cc_content_center_table);
+									
+							var cc_content_right = $(document.createElement('div'));//table-cell
+							cc_content_right.attr('class','mt_cc_content_right');
+							cc_content_row.append(cc_content_right);
+		
+		
+			var footerrow = $(document.createElement('div'));//table-row
+			footerrow.attr('class','mt_footer');
+			table.append(footerrow);
+				var footercell = $(document.createElement('div'));//table-cell
+				footercell.attr('class','mt_footercell');
+				footerrow.append(footercell);
+					var fc_content = $(document.createElement('div'));//table
+					fc_content.attr('class','mt_fc_content');
+					footercell.append(fc_content);
+						var fc_content_row = $(document.createElement('div'));//table-row
+						fc_content_row.attr('class','mt_fc_content_row');
+						fc_content.append(fc_content_row);
+							var fc_content_left = $(document.createElement('div'));//table-cell
+							fc_content_left.attr('class','mt_fc_content_left');
+							fc_content_row.append(fc_content_left);
+							var fc_content_center = $(document.createElement('div'));//table-cell
+							fc_content_center.attr('class','mt_fc_content_center');
+							fc_content_row.append(fc_content_center);
+								var fc_content_center_table = $(document.createElement('div'));//table
+								fc_content_center_table.attr('class','mt_fc_content_center_table');
+								fc_content_center.append(fc_content_center_table);
+									var fc_content_center_table_row = $(document.createElement('div'));//table-row
+									fc_content_center_table_row.attr('class','mt_fc_content_center_table_row');
+									fc_content_center_table.append(fc_content_center_table_row);
+							var fc_content_right = $(document.createElement('div'));//table-cell
+							fc_content_right.attr('class','mt_fc_content_right');
+							fc_content_row.append(fc_content_right);
+		
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		var ordiniid = [];
+		var ordini = [];
+		var mesi = [];
+		data.sort(reportSorter);
+		
+		$.each(data, function() {
+			
+			if($.inArray(this.order.id, ordiniid)==-1){	
+				ordiniid.push(this.order.id);
+				ordini.push(this.order);
+			}
+			if($.inArray(this.timeSheet.endDate, mesi)==-1){
+				mesi.push(this.timeSheet.endDate);
+			}
+		});
+		mesi.sort();
+		
+		
+		
+		$.each(mesi, function(i,v){
+			var data = new Date(v);
+			var divmese = $(document.createElement('div'));
+			divmese.attr('class','mt_hc_content_center_table_cell');
+			divmese.text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
+			hc_content_center.append(divmese);
+		});
+		
+		
+							
+		$.each(ordini, function(i,v){
+			var newrow = $(document.createElement('div'));
+			var newrow = $(document.createElement('div'));
+			newrow.attr('class','mt_cc_content_center_table_row');
+			cc_content_center_table.append(newrow);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			var rowheader = $(document.createElement('td'));
+			rowheader.attr('class','rowheader');
+			var newrowheader = rowheader.text(v.worker.name);
+			
+			table.append(newrow);
+			newrow.append(newrowheader);
+			
+			var reportentryordine = true;
+			while(reportentryordine && data.length>0){
+				if(data[0].order.id==v.id){
+					$.each(mesi, function(im,vm){
+						if(data.length>0 && data[0].timeSheet.endDate==vm){
+							var tdcell = $(document.createElement('td'));
+							tdcell.append(reportdiv(data[0]));
+							newrow.append(tdcell);
+							data.shift();
+						}else{
+							newrow.append($(document.createElement('td')));
+						}
+					});
+					
+				}else{
+					reportentryordine=false;
+				}
+			}
+			
+			
+			var residuo = $(document.createElement('td')).text(v.leftDays);
+			newrow.append(residuo);			
+		});
+		
+		
+		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
 		
 		this.append(table);
-		
 	};
 }(jQuery));
               
@@ -98,7 +382,7 @@ $(document).ready(function(){
 	    document.getElementById("bbb").scrollLeft = event.currentTarget.scrollLeft;
 	});
 	
-	$("#miotablecontainer").miotable();
+	$("#miotablecontainer").miotable(reportentries);
 	
 });
 
