@@ -20,8 +20,19 @@
 			.mt_headerrow_center{
 				display: table-cell;
 				overflow-x: hidden;
+				width: 400px;
 				border: solid 1px orange;
 			}
+				.mt_headerrow_center_table{
+					display: table;
+				}
+					.mt_headerrow_center_table_row{
+						display: table-row;
+					}
+						.mt_headerrow_center_table_row_cell{
+							display: table-cell;
+							width: 200px;
+						}
 			.mt_headerrow_right{
 				display: table-cell;
 				width: 100px;
@@ -47,19 +58,42 @@
 						.mt_contentrow_left_table_row_cell{
 							display: table-cell;
 							width: 100px;
-							height: 25px;
+							height: 70px;
 						}
 			.mt_contentrow_center{
 				display: table-cell;
 				overflow: hidden;
+				width: 400px;
 				border: solid 1px orange;
 			}
+				.mt_contentrow_center_table{
+					display: table;
+				}
+					.mt_contentrow_center_table_row{
+						display: table-row;
+					}
+						.mt_contentrow_center_table_row_cell{
+							display: table-cell;
+							width: 200px;
+							height: 70px;
+						}
 			.mt_contentrow_right{
 				display: table-cell;
 				overflow-y: scroll;
 				width: 100px;
 				border: solid 1px black;
 			}
+				.mt_contentrow_right_table{
+					display: table;
+				}
+					.mt_contentrow_right_table_row{
+						display: table-row;
+					}
+						.mt_contentrow_right_table_row_cell{
+							display: table-cell;
+							width: 100px;
+							height: 70px;
+						}
 		.mt_footerrow{
 			display: table-row;
 		}
@@ -71,6 +105,7 @@
 			.mt_footerrow_center{
 				display: table-cell;
 				overflow-x: scroll;
+				width: 400px;
 				border: solid 1px orange;
 			}
 			.mt_footerrow_right{
@@ -103,6 +138,37 @@ function reportSorter(a,b){
 	}
 }
 
+function reportdiv(divcontent){
+	var div = $(document.createElement('div'));
+	var table = $(document.createElement('table'));
+	var rowgiorni = $(document.createElement('tr'));
+	rowgiorni.append($(document.createElement('td')).text("Giorni:"));
+	rowgiorni.append($(document.createElement('td')).text(divcontent.days));
+	var roweuro = $(document.createElement('tr'));
+	var tdeuro = $(document.createElement('td')).text("Euro:");
+	tdeuro.attr('class','label');
+	roweuro.append(tdeuro);
+	
+	roweuro.append($(document.createElement('td')).text((divcontent.days*divcontent.order.rate)));
+	var rowinvoice = $(document.createElement('tr'));
+	rowinvoice.append($(document.createElement('td')).text("Fattura"));
+	if(divcontent.invoice!=null){
+		rowinvoice.append($(document.createElement('td')).text(divcontent.invoice.id+" del "+divcontent.invoice.date));
+	}else{
+		var checkbox = $(document.createElement('input'));
+		checkbox.attr('type','checkbox');
+		checkbox.attr('name','toinvoice');
+		checkbox.attr('value',divcontent.id);
+		rowinvoice.append($(document.createElement('td')).append(checkbox));
+	}
+	
+	table.append(rowgiorni);
+	table.append(roweuro);
+	table.append(rowinvoice);
+	div.append(table);
+	return div;
+}
+
 (function ( $ ) {
 	$.fn.miotable = function(data, options){
 
@@ -122,8 +188,13 @@ function reportSorter(a,b){
 				mt_headerrow.append(mt_headerrow_left);
 				var mt_headerrow_center = $(document.createElement('div'));
 				mt_headerrow_center.attr('class','mt_headerrow_center');
-				mt_headerrow_center.text('XXX');
 				mt_headerrow.append(mt_headerrow_center);
+					var mt_headerrow_center_table = $(document.createElement('div'));
+					mt_headerrow_center_table.attr('class','mt_headerrow_center_table');
+					mt_headerrow_center.append(mt_headerrow_center_table);
+						var mt_headerrow_center_table_row = $(document.createElement('div'));
+						mt_headerrow_center_table_row.attr('class','mt_headerrow_center_table_row');
+						mt_headerrow_center_table.append(mt_headerrow_center_table_row);
 				var mt_headerrow_right = $(document.createElement('div'));
 				mt_headerrow_right.attr('class','mt_headerrow_right');
 				mt_headerrow_right.text('XXX');
@@ -140,14 +211,18 @@ function reportSorter(a,b){
 					mt_contentrow_left.append(mt_contentrow_left_table);
 				var mt_contentrow_center = $(document.createElement('div'));
 				mt_contentrow_center.attr('class','mt_contentrow_center');
-				mt_contentrow_center.text("YYY");
+					var mt_contentrow_center_table = $(document.createElement('div'));
+					mt_contentrow_center_table.attr('class','mt_contentrow_center_table');
+					mt_contentrow_center.append(mt_contentrow_center_table);
 				mt_contentrow.append(mt_contentrow_center);
 				var mt_contentrow_right = $(document.createElement('div'));
 				mt_contentrow_right.attr('class','mt_contentrow_right');
-				mt_contentrow_right.text("YYY");
+					var mt_contentrow_right_table = $(document.createElement('div'));
+					mt_contentrow_right_table.attr('class','mt_contentrow_right_table');
+					mt_contentrow_right.append(mt_contentrow_right_table);
 				mt_contentrow.append(mt_contentrow_right);
 				
-			var mt_footerrow = $(document.createElement('div'));
+			var mt_footerrow = $(document.createElement('div')); 
 			mt_footerrow.attr('class','mt_footerrow');
 			mt.append(mt_footerrow);
 				var mt_footerrow_left = $(document.createElement('div'));
@@ -186,9 +261,55 @@ function reportSorter(a,b){
 				
 				$.each(mesi, function(i,v){
 					var data = new Date(v);
-					
+					var divmese = $(document.createElement('div'));
+					divmese.attr('class','mt_headerrow_center_table_row_cell')
 					divmese.text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
+					mt_headerrow_center_table_row.append(divmese);
+				});
+				
+				
+				
+				
+				$.each(ordini, function(i,v){
+					/* var newrow = $(document.createElement('tr'));
+					var rowheader = $(document.createElement('td')); */
+					var mt_contentrow_left_table_row = $(document.createElement('div'));
+					mt_contentrow_left_table_row.attr('class','mt_contentrow_left_table_row');
+					mt_contentrow_left_table.append(mt_contentrow_left_table_row);
+						var mt_contentrow_left_table_row_cell = $(document.createElement('div'));
+						mt_contentrow_left_table_row_cell.attr('class','mt_contentrow_left_table_row_cell');
+						mt_contentrow_left_table_row.append(mt_contentrow_left_table_row_cell);
+						mt_contentrow_left_table_row_cell.text(v.worker.name+' '+v.id);
+
+					var mt_contentrow_center_table_row = $(document.createElement('div'));
+					mt_contentrow_center_table_row.attr('class','mt_contentrow_center_table_row');
+					mt_contentrow_center_table.append(mt_contentrow_center_table_row);
+					var reportentryordine = true;
+					while(reportentryordine && data.length>0){
+						if(data[0].order.id==v.id){
+							$.each(mesi, function(im,vm){
+								if(data.length>0 && data[0].timeSheet.endDate==vm && data[0].order.id==v.id){
+									var mt_contentrow_center_table_row_cell = $(document.createElement('div'));
+									mt_contentrow_center_table_row_cell.attr('class','mt_contentrow_center_table_row_cell');
+									mt_contentrow_center_table_row_cell.append(reportdiv(data[0]));
+									mt_contentrow_center_table_row.append(mt_contentrow_center_table_row_cell);
+									data.shift();
+								}else{
+									var mt_contentrow_center_table_row_cell = $(document.createElement('div'));
+									mt_contentrow_center_table_row_cell.attr('class','mt_contentrow_center_table_row_cell');
+									mt_contentrow_center_table_row.append(mt_contentrow_center_table_row_cell);
+								}
+							});
+							
+						}else{
+							reportentryordine=false;
+						}
+					}
 					
+					/*
+					var residuo = $(document.createElement('td')).text(v.leftDays);
+					mt_contentrow_left_table_row.append(residuo);
+					*/
 				});
 				
 				
