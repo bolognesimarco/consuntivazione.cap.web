@@ -65,8 +65,8 @@
 						}
 			.mt_contentrow_center{
 				display: table-cell;
-				overflow: hidden;
-				table-layout:fixed;
+				overflow-x: hidden;
+				overflow-y: hidden;
 				max-width: 400px;
 				min-width: 400px;
 				border: solid 1px orange;
@@ -360,9 +360,8 @@ $(document).ready(function(){
 	$("#miotablecontainer").miotable(reportentries);
 	
 	$(".mt_footerrow_center").scroll(function(event){
-		alert(document.getElementsByClassName(".mt_contentrow_center"));
-	    document.getElementsByClassName(".mt_contentrow_center").scrollLeft = event.currentTarget.scrollLeft;
-	    document.getElementsByClassName(".mt_headerrow_center").scrollLeft = event.currentTarget.scrollLeft;
+	    document.getElementsByClassName("mt_contentrow_center")[0].scrollLeft = event.currentTarget.scrollLeft;
+	    document.getElementsByClassName("mt_headerrow_center")[0].scrollLeft = event.currentTarget.scrollLeft;
 	});
 	
 });
