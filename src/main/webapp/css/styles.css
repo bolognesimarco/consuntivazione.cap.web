@@ -53,11 +53,9 @@
 			}
 				.mt_contentrow_left_table{
 					display: table;
-					width: 100px;
 				}
 					.mt_contentrow_left_table_row{
 						display: table-row;
-						width: 100px;
 					}
 						.mt_contentrow_left_table_row_cell{
 							display: table-cell;
@@ -66,8 +64,7 @@
 						}
 			.mt_contentrow_center{
 				display: table-cell;
-				overflow-x: hidden;
-				overflow-y: hidden;
+				overflow: hidden;
 				max-width: 700px;
 				min-width: 700px;
 			}

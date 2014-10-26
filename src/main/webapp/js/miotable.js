@@ -152,6 +152,11 @@ function reportdiv(divcontent){
 				$.each(ordini, function(i,v){
 					var mt_contentrow_left_table_row = $(document.createElement('div'));
 					mt_contentrow_left_table_row.attr('class','mt_contentrow_left_table_row');
+					if(i%2==0){
+						mt_contentrow_left_table_row.attr('style','background-color: yellow');
+					}else{
+						mt_contentrow_left_table_row.attr('style','background-color: green');
+					}
 					mt_contentrow_left_table.append(mt_contentrow_left_table_row);
 						var mt_contentrow_left_table_row_cell = $(document.createElement('div'));
 						mt_contentrow_left_table_row_cell.attr('class','mt_contentrow_left_table_row_cell');
@@ -161,6 +166,11 @@ function reportdiv(divcontent){
 					var mt_contentrow_center_table_row = $(document.createElement('div'));
 					mt_contentrow_center_table_row.attr('class','mt_contentrow_center_table_row');
 					mt_contentrow_center_table.append(mt_contentrow_center_table_row);
+					if(i%2==0){
+						mt_contentrow_center_table_row.attr('style','background-color: yellow');
+					}else{
+						mt_contentrow_center_table_row.attr('style','background-color: green');
+					}
 					var reportentryordine = true;
 					while(reportentryordine && data.length>0){
 						if(data[0].order.id==v.id){
@@ -186,6 +196,11 @@ function reportdiv(divcontent){
 					
 					var mt_contentrow_right_table_row = $(document.createElement('div'));
 					mt_contentrow_right_table_row.attr('class','mt_contentrow_right_table_row');
+					if(i%2==0){
+						mt_contentrow_right_table_row.attr('style','background-color: yellow');
+					}else{
+						mt_contentrow_right_table_row.attr('style','background-color: green');
+					}
 					mt_contentrow_right_table.append(mt_contentrow_right_table_row);
 						var mt_contentrow_right_table_row_cell = $(document.createElement('div'));
 						mt_contentrow_right_table_row_cell.attr('class','mt_contentrow_right_table_row_cell');

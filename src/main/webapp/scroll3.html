@@ -3,16 +3,120 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/styles.css">
+<!-- <link rel="stylesheet" href="css/styles.css"> -->
 <script src="js/jquery-1.11.1.js"></script>
-<script src="js/miotable.js"></script>
+<!-- <script src="js/miotable.js"></script> -->
 <style>
-	
+	#t{
+		display: table;
+		border: solid 1px black;
+		width: 1200px;
+	}
+		#rh{
+			display: table-row;
+			width: 100%;
+			height: 100px;
+		}
+			#hl{
+				display: table-cell;
+				min-width: 200px;
+				background-color: pink;
+				border: solid 1px pink;
+			}
+			#hc{
+				display: table-cell;
+				width: 100%;
+				border: solid 1px pink;
+				overflow-x: hidden;
+			}
+			#hr{
+				display: table-cell;
+				min-width: 200px;
+				background-color: cyan;
+				border: solid 1px pink;
+				text-align: center;
+				vertical-align: middle;
+				font-weight: bold;
+				font-size: x-large;
+			}
+		#rc{
+			display: table-row;
+			width: 100%;
+			max-height: 600px;
+			min-height: 600px;
+		}
+			#cl{
+				display: table-cell;
+				border: solid 1px pink;
+				overflow: hidden;
+				height: 600px;/* 
+				min-height: 600px; */
+			}
+			#cc{
+				display: table-cell;
+				border: solid 1px pink;
+				overflow: hidden;
+			}
+			#cr{
+				display: table-cell;
+				border: solid 1px pink;
+				overflow-y: scroll;
+			}
+		#rf{
+			display: table-row;
+			width: 100%;
+			height: 100px;
+		}
+			#fl{
+				display: table-cell;
+				border: solid 1px pink;
+				background-color: magenta;
+				text-align: center;
+				vertical-align: middle;
+				font-weight: bold;
+				font-size: x-large;
+			}
+			#fc{
+				display: table-cell;
+				border: solid 1px pink;
+				overflow-x: scroll;
+			}
+			#fr{
+				display: table-cell;
+				border: solid 1px pink;
+				background-color: green;
+			}
+			
+			
+			
+	#container{
+		width: 300px;
+		height: 300px;
+		border: solid 1px red;
+		overflow: scroll;		
+	}
+	#contained{
+		width: 600px;
+		height: 400px;
+		border: solid 1px black;
+		overflow: hidden;
+	}
 </style>
 </head>
 <body>
 <script type="text/javascript">
-var reportentries = [
+
+var mesiDesc = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+function reportSorter(a,b){
+	if(a.order.id==b.order.id){ 
+		return a.timeSheet.endDate-b.timeSheet.endDate;
+	}else{
+		return a.order.id-b.order.id;
+	}
+}
+
+var data = [
 {"id":1,"days":13.5,"invoice":{"id":10, "date":1234567890},"timeSheet":{"id":21,"endDate":1409436000000,"days":2.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
 {"id":2,"days":3.5,"invoice":{"id":11, "date":1234567890},"timeSheet":{"id":22,"endDate":1406757600000,"days":3.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
 {"id":3,"days":1.5,"invoice":{"id":12, "date":1234567890},"timeSheet":{"id":23,"endDate":1412028000000,"days":1.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
@@ -30,23 +134,113 @@ var reportentries = [
 
 
 
+
 $(document).ready(function(){
-	//$("#miotablecontainer").miotable(reportentries);/* 
-	$.ajax({
-		url : "/consuntivazione.cap.web/timesheet/report",
-		type: "GET",
-		 data : {
-			workerId : 0,
-			month : 0,
-			year : 2014
-		}, 
-		success : function(data) {
-			$("#miotablecontainer").miotable(data);
-		}
-	});
+	var t = $(document.createElement('div'));
+	t.attr('id','t');
+	
+		var rh = $(document.createElement('div'));
+		rh.attr('id','rh');
+		t.append(rh);
+		
+			var hl = $(document.createElement('div'));
+			hl.attr('id','hl');
+			rh.append(hl);
+			
+			var hc = $(document.createElement('div'));
+			hc.attr('id','hc');
+			rh.append(hc);
+			
+			var hr = $(document.createElement('div'));
+			hr.attr('id','hr');
+			hr.text('Residui');
+			rh.append(hr);
+		
+		var rc = $(document.createElement('div'));
+		rc.attr('id','rc');
+		t.append(rc);
+			var cl = $(document.createElement('div'));
+			cl.attr('id','cl');
+			rc.append(cl);
+			
+			var cc = $(document.createElement('div'));
+			cc.attr('id','cc');
+			rc.append(cc);
+			
+			var cr = $(document.createElement('div'));
+			cr.attr('id','cr');
+			rc.append(cr);
+		
+		var rf = $(document.createElement('div'));
+		rf.attr('id','rf');
+		t.append(rf);
+			var fl = $(document.createElement('div'));
+			fl.attr('id','fl');
+			fl.text('Totali');
+			rf.append(fl);
+			
+			var fc = $(document.createElement('div'));
+			fc.attr('id','fc');
+			rf.append(fc);
+			
+			var fr = $(document.createElement('div'));
+			fr.attr('id','fr');
+			rf.append(fr);
+			
+			
+			
+			
+			
+			
+			
+			var ordiniid = [];
+			var ordini = [];
+			var mesi = [];
+			data.sort(reportSorter);
+
+			$.each(data, function() {
+				
+				if($.inArray(this.order.id, ordiniid)==-1){	
+					ordiniid.push(this.order.id);
+					ordini.push(this.order);
+				}
+				if($.inArray(this.timeSheet.endDate, mesi)==-1){
+					mesi.push(this.timeSheet.endDate);
+				}
+			});
+			mesi.sort();
+
+			
+			$.each(mesi, function(i,v){
+				var data = new Date(v);
+				var div = $(document.createElement('div'));
+				div.attr('style','width: 100%; height: 300px;');
+				div.text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
+				cl.append(div);
+				/*
+				var tr = $(document.createElement('tr'));
+					tr.attr('style','height: 300px');
+				var td = $(document.createElement('td'));
+				td.text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
+				tr.append(td);
+				table.append(tr);
+				*/
+			});
+			
+			
+			
+			
+	
+	
+	$('#miotablecontainer').append(t);
 });
 
 </script>
 	<div id="miotablecontainer"></div>
+	
+	
+	<!-- <div id="container" >
+		<div id="contained"></div>
+	</div> -->
 </body>
 </html>
