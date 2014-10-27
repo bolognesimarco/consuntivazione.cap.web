@@ -7,45 +7,38 @@
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/miotable.js"></script>
 <style>
+	#thediv{
+		display: inline-block;
+		border: solid 1px cyan;
+		font-size: 0px;
+	}
+
+	#headerdiv{
+		display: inline-block;
+		background-color: cyan; 
+		border: solid 1px black;
+		font-size: 0px;
+	}
 	#lhc{
+		display: inline-block;
 		width: 150px;
 		height: 60px;
 		border: solid 1px red;
+		background-color: pink;
 	}
 	#header{
-		width: 600px;
+		display: inline-block;
+		/* width: 600px; */
 		height: 60px;
 		border: solid 1px red;
+		background-color: pink;
+		font-size: medium;
 	}#rhc{
+		display: inline-block;
 		width: 150px;
 		height: 60px;
 		border: solid 1px red;
-	}
-	
-	#provainline{ /* MARGIN e PADDING valgono solo orizzontalmente, WIDTH e HEIGHT non valgono */
-		display: inline;
-		border: solid 1px green;
 		background-color: pink;
-		margin: 10px;
-		padding: 10px;
-	}
-	#provainlineblock{ /* VALGONO MARGIN, PADDING, WIDTH e HEIGHT ma è inline col testo */
-		display: inline-block;
-		border: solid 1px blue;
-		background-color: yellow;
-		margin: 30px;
-		padding: 30px;
-		width: 300px;
-		height: 100px;
-	}
-	#provablock{/* VALGONO MARGIN, PADDING, WIDTH e HEIGHT e ha un a capo prima e dopo */
-		display: block;
-		border: solid 1px black;
-		background-color: magenta;
-		margin: 30px;
-		padding: 30px;
-		width: 300px;
-		height: 100px;
 	}
 </style>
 </head>
@@ -71,15 +64,26 @@ var reportentries = [
 
 $(document).ready(function(){
 	
+	var headerdiv = $(document.createElement('div'));
+	headerdiv.attr('id','headerdiv');
+	$('#thediv').append(headerdiv);
+	
+	var lhc = $(document.createElement('div'));
+	lhc.attr('id','lhc');
+	headerdiv.append(lhc);
+	var header = $(document.createElement('div'));
+	header.attr('id','header'); 
+	header.text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	headerdiv.append(header);
+	var rhc = $(document.createElement('div'));
+	rhc.attr('id','rhc');
+	headerdiv.append(rhc);
+	
+	
 });
 
 </script>
-	<div id="lhc"></div><div id="header"></div><div id="rhc"></div>
-	
-	provainline<div id="provainline">provainline</div>provainline
-	<br>
-	provainlineblock<div id="provainlineblock">provainlineblock</div>provainlineblock
-	<br>
-	provablock<div id="provablock">provablock</div>provablock
+	<div id="thediv"></div>
+	<!-- <div id="headerdiv"><div id="lhc"></div><div id="header"></div><div id="rhc"></div></div> -->
 </body>
 </html>
