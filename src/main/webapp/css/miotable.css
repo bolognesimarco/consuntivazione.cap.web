@@ -1,0 +1,197 @@
+#headerrow{
+	position: absolute;
+	top: 0%;
+	bottom: 85%;
+	left: 0%;
+	right: 0%;
+	border-top: solid 1px red;
+	border-left: solid 1px red;
+	border-right: solid 1px red;
+}
+#contentrow{
+	position: absolute;
+	bottom: 15%;
+	top: 15%;
+	left: 0%;
+	right: 0%;
+	border-left: solid 1px red;
+	border-right: solid 1px red;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+}
+#footerrow{
+	position: absolute;
+	bottom: 0%;
+	top: 85%;
+	left: 0%;
+	right: 0%;
+	border-bottom: solid 1px red;
+	border-left: solid 1px red;
+	border-right: solid 1px red;
+}
+
+
+
+
+#leftheader{
+	position: absolute; 
+	left: 0px;
+	top: 0px;
+	
+	right: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+#header{
+	position: absolute;
+	height: 100%;
+	left: 10%;
+	right: 10%;
+	
+	background-color: lime;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
+	
+	overflow-x: hidden;
+}
+#rightheader{
+	position: absolute; 
+	right: 0px;
+	top: 0px;
+	
+	left: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+
+
+.headertable{
+	display: table;
+	height: 100%;
+}
+.headertablerow{
+	display: table-row;
+	height: 100%;
+}
+.headertablecell{
+	display: table-cell; 
+	height: 100%;
+	min-width: 150px;
+	background-color: pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#leftcontent{
+	position: absolute; 
+	left: 0px;
+	top: 0px;
+	
+	right: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+#content{
+	position: absolute;
+	height: 100%;
+	left: 10%;
+	right: 10%;
+	top:0px;
+	bottom: 0px;
+	
+	background-color: lime;
+	
+	border-left: solid 1px black;
+	border-right: solid 1px black;
+	
+	overflow: hidden;
+}
+#rightcontent{
+	position: absolute; 
+	right: 0px;
+	top: 0px;
+	
+	left: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+
+.contenttable{
+	display: table;
+	height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#leftfooter{
+	position: absolute; 
+	left: 0px;
+	top: 0px;
+	
+	right: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+#footer{
+	position: absolute;
+	height: 100%;
+	left: 10%;
+	right: 10%;
+	
+	background-color: lime;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
+	
+	overflow-x: hidden;
+}
+	.footertable{
+		display: table;
+		height: 100%;
+	}
+	.footertablerow{
+		display: table-row;
+		height: 100%;
+	}
+	.footertablecell{
+		display: table-cell; 
+		height: 100%;
+		min-width: 150px;
+		background-color: pink;
+	}
+
+#rightfooter{
+	position: absolute; 
+	right: 0px;
+	top: 0px;
+	
+	left: 90%;
+	height: 100%;
+	
+	background-color: aqua;
+}
+
+

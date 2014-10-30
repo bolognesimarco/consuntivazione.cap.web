@@ -7,7 +7,7 @@
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/miotable.js"></script>
 <style>
-	#thediv{
+	#thedivinlineblock{
 		display: inline-block;
 		border: solid 1px cyan;
 		font-size: 0px;
@@ -64,26 +64,26 @@ var reportentries = [
 
 $(document).ready(function(){
 	
-	var headerdiv = $(document.createElement('div'));
-	headerdiv.attr('id','headerdiv');
-	$('#thediv').append(headerdiv);
+	var headerdivinlineblock = $(document.createElement('div'));
+	headerdivinlineblock.attr('id','headerdivinlineblock');
+	$('#thedivinlineblock').append(headerdivinlineblock);
 	
 	var lhc = $(document.createElement('div'));
 	lhc.attr('id','lhc');
-	headerdiv.append(lhc);
+	headerdivinlineblock.append(lhc);
 	var header = $(document.createElement('div'));
 	header.attr('id','header'); 
 	header.text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	headerdiv.append(header);
+	headerdivinlineblock.append(header);
 	var rhc = $(document.createElement('div'));
 	rhc.attr('id','rhc');
-	headerdiv.append(rhc);
+	headerdivinlineblock.append(rhc);
 	
 	
 });
 
 </script>
-	<div id="thediv"></div>
+	<div id="#thedivinlineblock"></div>
 	<!-- <div id="headerdiv"><div id="lhc"></div><div id="header"></div><div id="rhc"></div></div> -->
 </body>
 </html>

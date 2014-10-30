@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/miotable.css">
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/miotable2.js"></script>
+
+<style type="text/css">
+#inlineblockcontainer{
+	height: 600px;
+	width: 600px;
+	border: dashed 1px black;
+}
+
+#prova{
+	position: relative;
+	margin: 10px;
+	border: solid 10px black;
+	padding: 10px;
+	width: 300px;
+	height: 300px;
+	
+	background-color: pink;
+}
+
+#inner{
+	position: absolute;
+	left: 0px;
+	margin: 10px;
+	border: solid 10px black;
+	padding: 10px;
+	width: 100px;
+	height: 100px;
+	
+	background-color: red;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var reportentries = [
+{"id":1,"days":13.5,"invoice":{"id":10, "date":1234567890},"timeSheet":{"id":21,"endDate":1409436000000,"days":2.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":2,"days":3.5,"invoice":{"id":11, "date":1234567890},"timeSheet":{"id":22,"endDate":1406757600001,"days":3.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":3,"days":1.5,"invoice":{"id":12, "date":1234567890},"timeSheet":{"id":23,"endDate":1412028000002,"days":1.5,"suspendedDays":10},"order": {"id":41, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}},
+{"id":4,"days":23.5,"invoice":{"id":31, "date":1234567890},"timeSheet":{"id":34,"endDate":1409436000003,"days":4.5,"suspendedDays":10},"order": {"id":42, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":5,"days":10.5,"invoice":{"id":14, "date":1234567890},"timeSheet":{"id":24,"endDate":1406757600004,"days":6.5,"suspendedDays":10},"order": {"id":43, "leftDays":2, "rate":310.00, "worker":{"name":"Gnignera"}}},
+{"id":6,"days":4.5,"invoice":{"id":15, "date":1234567890},"timeSheet":{"id":24,"endDate":1412028000005,"days":7.5,"suspendedDays":10},"order": {"id":44, "leftDays":2, "rate":310.00, "worker":{"name":"Barigelli"}}},
+{"id":7,"days":6.5,"invoice":{"id":16, "date":1234567890},"timeSheet":{"id":24,"endDate":1409436000006,"days":2.5,"suspendedDays":10},"order": {"id":45, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":8,"days":2.5,"invoice":{"id":17, "date":1234567890},"timeSheet":{"id":21,"endDate":1406757600007,"days":4.5,"suspendedDays":10},"order": {"id":45, "leftDays":2, "rate":310.00, "worker":{"name":"Bruni"}}},
+{"id":9,"days":22.5,"invoice":{"id":18, "date":1234567890},"timeSheet":{"id":12,"endDate":1412028000008,"days":5.5,"suspendedDays":10},"order": {"id":46, "leftDays":2, "rate":310.00, "worker":{"name":"Bolognesi"}}}
+];
+
+$(document).ready(function(){
+	
+	$('#inlineblockcontainer').miotable(reportentries);
+});
+
+</script>
+	<div id="inlineblockcontainer"></div>
+	<div id="prova">
+		<div id="inner"></div>
+	</div>
+</body>
+</html>
