@@ -1,7 +1,7 @@
 #headerrow{
 	position: absolute;
 	top: 0%;
-	bottom: 85%;
+	/* bottom: 85%; */
 	left: 0%;
 	right: 0%;
 	border-top: solid 1px red;
@@ -11,7 +11,7 @@
 #contentrow{
 	position: absolute;
 	bottom: 15%;
-	top: 15%;
+	/* top: 15%; */
 	left: 0%;
 	right: 0%;
 	border-left: solid 1px red;
@@ -70,6 +70,7 @@
 .headertable{
 	display: table;
 	height: 100%;
+	width: 100%
 }
 .headertablerow{
 	display: table-row;
@@ -78,8 +79,8 @@
 .headertablecell{
 	display: table-cell; 
 	height: 100%;
-	min-width: 150px;
 	background-color: pink;
+	min-width: 150px;
 }
 
 

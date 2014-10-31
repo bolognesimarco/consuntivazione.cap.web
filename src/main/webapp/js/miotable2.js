@@ -1,13 +1,18 @@
 (function ( $ ) {
-	$.fn.miotable = function(data, options){
+	$.fn.miotable = function(options){
 
 		var settings = $.extend({
-			
+			headerHeight: 15
+				
+				
+				
+				
 		}, options);
 		
 		this.css('position','relative');
 		
 		var headerrow = $(document.createElement('div')).attr('id','headerrow');
+		headerrow.css('bottom',(100-settings.headerHeight)+'%');
 			var leftheader = $(document.createElement('div')).attr('id','leftheader');
 			headerrow.append(leftheader);
 			
@@ -20,6 +25,7 @@
 			
 			
 		var contentrow = $(document.createElement('div')).attr('id','contentrow');
+		contentrow.css('top',settings.headerHeight+'%');
 			var leftcontent = $(document.createElement('div')).attr('id','leftcontent');
 			contentrow.append(leftcontent);
 			var content = $(document.createElement('div')).attr('id','content');
@@ -42,25 +48,7 @@
 		this.append(headerrow);
 		this.append(contentrow);
 		this.append(footerrow);
-				
-				
-				var ordiniid = [];
-				var ordini = [];
-				var mesi = [];
-				data.sort(reportSorter);
-				
-				$.each(data, function() {
-					
-					if($.inArray(this.order.id, ordiniid)==-1){	
-						ordiniid.push(this.order.id);
-						ordini.push(this.order);
-					}
-					if($.inArray(this.timeSheet.endDate, mesi)==-1){
-						mesi.push(this.timeSheet.endDate);
-					}
-				});
-				mesi.sort();
-				
+								
 				var headertable = $(document.createElement('div'));
 				headertable.attr('class','headertable');
 				header.append(headertable);
@@ -69,12 +57,11 @@
 				headertablerow.attr('class','headertablerow');
 				headertable.append(headertablerow);
 				
-				$.each(mesi, function(i,v){
-					var data = new Date(v);
+				$.each(settings.headerData, function(i,v){
 					var headercell = $(document.createElement('div'));
 					headercell.attr('class','headertablecell');
-					headercell.css('width',(100/mesi.length)+'%');
-					headercell.text('CIAO');
+					headercell.css('width',(100/settings.headerData.length)+'%');
+					headercell.text(v);
 					headertablerow.append(headercell);
 				});
 //					var divmese = $(document.createElement('div'));
@@ -162,15 +149,7 @@
 
 
 
-var mesiDesc = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 
-function reportSorter(a,b){
-	if(a.order.id==b.order.id){ 
-		return a.timeSheet.endDate-b.timeSheet.endDate;
-	}else{
-		return a.order.id-b.order.id;
-	}
-}
 
 function reportdiv(divcontent){
 	var div = $(document.createElement('div'));
