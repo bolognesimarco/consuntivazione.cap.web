@@ -22,7 +22,6 @@
 #footerrow{
 	position: absolute;
 	bottom: 0%;
-	/* top: 85%; */
 	left: 0%;
 	right: 0%;
 	border-bottom: solid 1px red;
@@ -38,7 +37,6 @@
 	left: 0px;
 	top: 0px;
 	
-	/* right: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -46,8 +44,6 @@
 #header{
 	position: absolute;
 	height: 100%;
-	/* left: 10%; */
-	/* right: 10%; */
 	
 	background-color: lime;
 	border-left: solid 1px black;
@@ -83,6 +79,21 @@
 	min-width: 150px;
 }
 
+.lefttable{
+	display: table;
+	height: 100%;
+	width: 100%
+}
+.lefttablerow{
+	display: table-row;
+	width: 100%;
+}
+.lefttablecell{
+	display: table-cell; 
+	min-height: 100px;
+	background-color: pink;
+	width: 100%;
+}
 
 
 
@@ -104,6 +115,7 @@
 	height: 100%;
 	
 	background-color: aqua;
+	overflow: hidden;
 }
 #content{
 	position: absolute;

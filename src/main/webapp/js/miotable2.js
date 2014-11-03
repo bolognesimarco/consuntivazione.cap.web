@@ -61,7 +61,9 @@
 		this.append(headerrow);
 		this.append(contentrow);
 		this.append(footerrow);
-								
+						
+		
+//		HEADERDATA
 				var headertable = $(document.createElement('div'));
 				headertable.attr('class','headertable');
 				header.append(headertable);
@@ -79,6 +81,7 @@
 				});
 				
 				
+//		FOOTERDATA
 				var footertable = $(document.createElement('div'));
 				footertable.attr('class','footertable');
 				footer.append(footertable);
@@ -98,6 +101,27 @@
 					footercell.text(v);
 					footertablerow.append(footercell);
 				});
+				
+				
+
+//		LEFTDATA
+				var lefttable = $(document.createElement('div'));
+				lefttable.attr('class','lefttable');
+				leftcontent.append(lefttable);
+				$.each(settings.leftData, function(i,v){
+					var lefttablerow = $(document.createElement('div'));
+					lefttablerow.attr('class','lefttablerow');
+					lefttable.append(lefttablerow);
+					
+					var lefttablecell = $(document.createElement('div'));
+					lefttablecell.attr('class','lefttablecell');
+					lefttablecell.css('height',(100/settings.leftData.length)+'%');
+					lefttablecell.text(v);
+					lefttablerow.append(lefttablecell);
+				});
+				
+//		RIGHTDATA
+				
 //					var divmese = $(document.createElement('div'));
 //					divmese.attr('class','mt_headerrow_center_table_row_cell');
 //					divmese.text(mesiDesc[data.getMonth()]+'-'+(data.getYear()+1900));
