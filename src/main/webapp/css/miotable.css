@@ -10,7 +10,7 @@
 }
 #contentrow{
 	position: absolute;
-	bottom: 15%;
+	/* bottom: 15%; */
 	/* top: 15%; */
 	left: 0%;
 	right: 0%;
@@ -22,7 +22,7 @@
 #footerrow{
 	position: absolute;
 	bottom: 0%;
-	top: 85%;
+	/* top: 85%; */
 	left: 0%;
 	right: 0%;
 	border-bottom: solid 1px red;
@@ -38,7 +38,7 @@
 	left: 0px;
 	top: 0px;
 	
-	right: 90%;
+	/* right: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -46,8 +46,8 @@
 #header{
 	position: absolute;
 	height: 100%;
-	left: 10%;
-	right: 10%;
+	/* left: 10%; */
+	/* right: 10%; */
 	
 	background-color: lime;
 	border-left: solid 1px black;
@@ -60,7 +60,7 @@
 	right: 0px;
 	top: 0px;
 	
-	left: 90%;
+	/* left: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -100,7 +100,7 @@
 	left: 0px;
 	top: 0px;
 	
-	right: 90%;
+	/* right: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -108,8 +108,8 @@
 #content{
 	position: absolute;
 	height: 100%;
-	left: 10%;
-	right: 10%;
+	/* left: 10%; */
+	/* right: 10%; */
 	top:0px;
 	bottom: 0px;
 	
@@ -125,7 +125,7 @@
 	right: 0px;
 	top: 0px;
 	
-	left: 90%;
+	/* left: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -152,7 +152,7 @@
 	left: 0px;
 	top: 0px;
 	
-	right: 90%;
+	/* right: 90%; */
 	height: 100%;
 	
 	background-color: aqua;
@@ -160,14 +160,14 @@
 #footer{
 	position: absolute;
 	height: 100%;
-	left: 10%;
-	right: 10%;
+	/* left: 10%; */
+	/* right: 10%; */
 	
 	background-color: lime;
 	border-left: solid 1px black;
 	border-right: solid 1px black;
 	
-	overflow-x: hidden;
+	overflow-x: scroll;
 }
 	.footertable{
 		display: table;
@@ -189,7 +189,7 @@
 	right: 0px;
 	top: 0px;
 	
-	left: 90%;
+	/* left: 90%; */
 	height: 100%;
 	
 	background-color: aqua;

@@ -2,11 +2,10 @@
 	$.fn.miotable = function(options){
 
 		var settings = $.extend({
-			headerHeight: 15
-				
-				
-				
-				
+			headerHeight: 15,
+			footerHeight: 15,
+			leftWidth: 10,
+			rightWidth: 10
 		}, options);
 		
 		this.css('position','relative');
@@ -14,35 +13,49 @@
 		var headerrow = $(document.createElement('div')).attr('id','headerrow');
 		headerrow.css('bottom',(100-settings.headerHeight)+'%');
 			var leftheader = $(document.createElement('div')).attr('id','leftheader');
+			leftheader.css('right',(100-settings.leftWidth)+'%');
 			headerrow.append(leftheader);
 			
 			var header = $(document.createElement('div')).attr('id','header');
+			header.css('left',settings.leftWidth+'%');
+			header.css('right',settings.rightWidth+'%');
 			headerrow.append(header);
 			
 			var rightheader = $(document.createElement('div')).attr('id','rightheader');
+			rightheader.css('left',(100-settings.rightWidth)+'%');
 			headerrow.append(rightheader);
 			
 			
 			
 		var contentrow = $(document.createElement('div')).attr('id','contentrow');
 		contentrow.css('top',settings.headerHeight+'%');
+		contentrow.css('bottom',settings.footerHeight+'%');
 			var leftcontent = $(document.createElement('div')).attr('id','leftcontent');
+			leftcontent.css('right',(100-settings.leftWidth)+'%');
 			contentrow.append(leftcontent);
 			var content = $(document.createElement('div')).attr('id','content');
+			content.css('left',settings.leftWidth+'%');
+			content.css('right',settings.rightWidth+'%');
 			contentrow.append(content);
 			var rightcontent = $(document.createElement('div')).attr('id','rightcontent');
+			rightcontent.css('left',(100-settings.rightWidth)+'%');
 			contentrow.append(rightcontent);
 		
 		
 			
 		var footerrow = $(document.createElement('div')).attr('id','footerrow');
+		footerrow.css('top',(100-settings.footerHeight)+'%');
 			var leftfooter = $(document.createElement('div')).attr('id','leftfooter');
+			leftfooter.css('right',(100-settings.leftWidth)+'%');
 			footerrow.append(leftfooter);
 			
 			var footer = $(document.createElement('div')).attr('id','footer');
+			footer.css('left',settings.leftWidth+'%');
+			footer.css('right',settings.rightWidth+'%');
 			footerrow.append(footer);
 			
 			var rightfooter = $(document.createElement('div')).attr('id','rightfooter');
+			rightfooter.css('left',(100-settings.rightWidth)+'%');
 			footerrow.append(rightfooter);
 		
 		this.append(headerrow);
@@ -63,6 +76,27 @@
 					headercell.css('width',(100/settings.headerData.length)+'%');
 					headercell.text(v);
 					headertablerow.append(headercell);
+				});
+				
+				
+				var footertable = $(document.createElement('div'));
+				footertable.attr('class','footertable');
+				footer.append(footertable);
+				footer.on("scroll", function(event){
+					document.getElementById("content").scrollLeft = event.currentTarget.scrollLeft;
+				    document.getElementById("header").scrollLeft = event.currentTarget.scrollLeft;
+				});
+				
+				var footertablerow = $(document.createElement('div'));
+				footertablerow.attr('class','footertablerow');
+				footertable.append(footertablerow);
+				
+				$.each(settings.footerData, function(i,v){
+					var footercell = $(document.createElement('div'));
+					footercell.attr('class','footertablecell');
+					footercell.css('width',(100/settings.footerData.length)+'%');
+					footercell.text(v);
+					footertablerow.append(footercell);
 				});
 //					var divmese = $(document.createElement('div'));
 //					divmese.attr('class','mt_headerrow_center_table_row_cell');

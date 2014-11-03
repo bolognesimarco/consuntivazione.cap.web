@@ -68,7 +68,11 @@ $.each(mesi, function() {
 $(document).ready(function(){
 	$('#inlineblockcontainer').miotable({
 		headerData: mesiString,
-		headerHeight: 50
+		footerData: mesiString,
+		headerHeight: 30,
+		footerHeight: 30,
+		leftWidth: 30,
+		rightWidth: 30
 	});
 });
 
