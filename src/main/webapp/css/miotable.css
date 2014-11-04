@@ -79,10 +79,10 @@
 	min-width: 150px;
 }
 
-.lefttable{
+/* .lefttable{
 	display: table;
 	height: 100%;
-	width: 100%
+	width: 100%;
 }
 .lefttablerow{
 	display: table-row;
@@ -94,11 +94,19 @@
 	background-color: pink;
 	width: 100%;
 }
+ */
+ 
+.leftcell{
+	width: 100%;
+	min-height: 100px;
+}
 
 
 
-
-
+.rightcell{
+	width: 100%;
+	min-height: 100px;
+}
 
 
 
@@ -139,6 +147,8 @@
 	
 	/* left: 90%; */
 	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	
 	background-color: aqua;
 }

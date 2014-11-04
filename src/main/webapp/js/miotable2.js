@@ -39,6 +39,10 @@
 			contentrow.append(content);
 			var rightcontent = $(document.createElement('div')).attr('id','rightcontent');
 			rightcontent.css('left',(100-settings.rightWidth)+'%');
+			rightcontent.on("scroll", function(event){
+				document.getElementById("content").scrollTop = event.currentTarget.scrollTop;
+			    document.getElementById("leftcontent").scrollTop = event.currentTarget.scrollTop;
+			});
 			contentrow.append(rightcontent);
 		
 		
@@ -105,22 +109,31 @@
 				
 
 //		LEFTDATA
-				var lefttable = $(document.createElement('div'));
-				lefttable.attr('class','lefttable');
-				leftcontent.append(lefttable);
+
 				$.each(settings.leftData, function(i,v){
-					var lefttablerow = $(document.createElement('div'));
-					lefttablerow.attr('class','lefttablerow');
-					lefttable.append(lefttablerow);
 					
-					var lefttablecell = $(document.createElement('div'));
-					lefttablecell.attr('class','lefttablecell');
-					lefttablecell.css('height',(100/settings.leftData.length)+'%');
-					lefttablecell.text(v);
-					lefttablerow.append(lefttablecell);
+					var leftcell = $(document.createElement('div'));
+					leftcell.attr('class','leftcell');
+					leftcell.css('height',(100/settings.leftData.length)+'%');
+					leftcell.text(v);
+					leftcontent.append(leftcell);
+
 				});
 				
 //		RIGHTDATA
+				$.each(settings.rightData, function(i,v){
+					
+					var rightcell = $(document.createElement('div'));
+					rightcell.attr('class','rightcell');
+					rightcell.css('height',(100/settings.rightData.length)+'%');
+					rightcell.text(v);
+					rightcontent.append(rightcell);
+
+				});
+				
+				
+				
+				
 				
 //					var divmese = $(document.createElement('div'));
 //					divmese.attr('class','mt_headerrow_center_table_row_cell');
