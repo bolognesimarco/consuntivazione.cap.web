@@ -115,7 +115,21 @@
 					var leftcell = $(document.createElement('div'));
 					leftcell.attr('class','leftcell');
 					leftcell.css('height',(100/settings.leftData.length)+'%');
-					leftcell.text(v);
+
+
+					var leftcelltable = $(document.createElement('div'));
+					leftcelltable.attr('class','leftcelltable');
+					leftcell.append(leftcelltable);
+					
+					var leftcelltablerow = $(document.createElement('div'));
+					leftcelltablerow.attr('class','leftcelltablerow');
+					leftcelltable.append(leftcelltablerow);
+					
+					var leftcelltablecell = $(document.createElement('div'));
+					leftcelltablecell.attr('class','leftcelltablecell');
+					leftcelltablecell.text(v);
+					leftcelltablerow.append(leftcelltablecell);
+					
 					leftcontent.append(leftcell);
 
 				});
@@ -126,9 +140,47 @@
 					var rightcell = $(document.createElement('div'));
 					rightcell.attr('class','rightcell');
 					rightcell.css('height',(100/settings.rightData.length)+'%');
-					rightcell.text(v);
+					
+					
+					var rightcelltable = $(document.createElement('div'));
+					rightcelltable.attr('class','rightcelltable');
+					rightcell.append(rightcelltable);
+					
+					var rightcelltablerow = $(document.createElement('div'));
+					rightcelltablerow.attr('class','rightcelltablerow');
+					rightcelltable.append(rightcelltablerow);
+					
+					var rightcelltablecell = $(document.createElement('div'));
+					rightcelltablecell.attr('class','rightcelltablecell');
+					rightcelltablecell.text(v);
+					rightcelltablerow.append(rightcelltablecell);
+					
 					rightcontent.append(rightcell);
 
+				});
+				
+//		CONTENT DATA				
+				$.each(settings.contentData, function(i, v){
+					var contentcontentrow = $(document.createElement('div'));
+					contentcontentrow.attr('class','contentcontentrow');
+					contentcontentrow.css('height',(100/settings.contentData.length)+'%');
+					content.append(contentcontentrow);
+					
+					var contentcontenttable = $(document.createElement('div'));
+					contentcontenttable.attr('class','contentcontenttable');
+					contentcontentrow.append(contentcontenttable);
+					
+					var contentcontenttablerow = $(document.createElement('div'));
+					contentcontenttablerow.attr('class','contentcontenttablerow');
+					contentcontenttable.append(contentcontenttablerow);
+					
+					$.each(v.elements, function(ie,ve){	
+						var contentcontenttablecell = $(document.createElement('div'));
+						contentcontenttablecell.attr('class','contentcontenttablecell');
+						contentcontenttablecell.css('width',(100/v.elements.length)+'%');
+						contentcontenttablecell.text(ve);
+						contentcontenttablerow.append(contentcontenttablecell);
+					});
 				});
 				
 				
