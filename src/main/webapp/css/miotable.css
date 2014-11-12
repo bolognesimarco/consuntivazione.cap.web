@@ -4,9 +4,9 @@
 	/* bottom: 85%; */
 	left: 0%;
 	right: 0%;
-	border-top: solid 1px red;
-	border-left: solid 1px red;
-	border-right: solid 1px red;
+	border-top: solid 1px black;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
 }
 					#leftheader{
 						position: absolute; 
@@ -55,8 +55,8 @@
 	position: absolute;
 	left: 0%;
 	right: 0%;
-	border-left: solid 1px red;
-	border-right: solid 1px red;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
 	border-top: solid 1px black;
 	border-bottom: solid 1px black;
 }
@@ -156,9 +156,9 @@
 	bottom: 0%;
 	left: 0%;
 	right: 0%;
-	border-bottom: solid 1px red;
-	border-left: solid 1px red;
-	border-right: solid 1px red;
+	border-bottom: solid 1px black;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
 }
 					#leftfooter{
 						position: absolute; 

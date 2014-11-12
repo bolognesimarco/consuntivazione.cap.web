@@ -12,8 +12,10 @@
 		
 		var headerrow = $(document.createElement('div')).attr('id','headerrow');
 		headerrow.css('bottom',(100-settings.headerHeight)+'%');
+		headerrow.css('background-color','#D3D3D3');
 			var leftheader = $(document.createElement('div')).attr('id','leftheader');
 			leftheader.css('right',(100-settings.leftWidth)+'%');
+			leftheader.css('background-color','white');
 			headerrow.append(leftheader);
 			
 			var header = $(document.createElement('div')).attr('id','header');
@@ -23,6 +25,7 @@
 			
 			var rightheader = $(document.createElement('div')).attr('id','rightheader');
 			rightheader.css('left',(100-settings.rightWidth)+'%');
+			rightheader.css('background-color','white');
 			headerrow.append(rightheader);
 			
 			
@@ -80,6 +83,7 @@
 					var headercell = $(document.createElement('div'));
 					headercell.attr('class','headertablecell');
 					headercell.css('width',(100/settings.headerData.length)+'%');
+					headercell.css('font-weight','bold');
 					headercell.text(v);
 					headertablerow.append(headercell);
 				});
@@ -102,6 +106,7 @@
 					var footercell = $(document.createElement('div'));
 					footercell.attr('class','footertablecell');
 					footercell.css('width',(100/settings.footerData.length)+'%');
+					footercell.css('border-bottom','solid 1px black');
 					footercell.text(v);
 					footertablerow.append(footercell);
 				});
@@ -115,7 +120,8 @@
 					var leftcell = $(document.createElement('div'));
 					leftcell.attr('class','leftcell');
 					leftcell.css('height',(100/settings.leftData.length)+'%');
-
+					leftcell.css('background-color','#D3D3D3');
+					
 
 					var leftcelltable = $(document.createElement('div'));
 					leftcelltable.attr('class','leftcelltable');
@@ -140,7 +146,6 @@
 					var rightcell = $(document.createElement('div'));
 					rightcell.attr('class','rightcell');
 					rightcell.css('height',(100/settings.rightData.length)+'%');
-					
 					
 					var rightcelltable = $(document.createElement('div'));
 					rightcelltable.attr('class','rightcelltable');
@@ -168,7 +173,13 @@
 					
 					var contentcontenttable = $(document.createElement('div'));
 					contentcontenttable.attr('class','contentcontenttable');
+					if(i%2==0){
+						contentcontenttable.css('background-color','#DDDDDD');
+					}else{
+						contentcontenttable.css('background-color','#FFFF99');
+					}
 					contentcontentrow.append(contentcontenttable);
+									
 					
 					var contentcontenttablerow = $(document.createElement('div'));
 					contentcontenttablerow.attr('class','contentcontenttablerow');
