@@ -5,7 +5,10 @@
 			headerHeight: 15,
 			footerHeight: 15,
 			leftWidth: 10,
-			rightWidth: 10
+			rightWidth: 10,
+			leftFooterText: 'Tot.',
+			rightHeaderText: 'Tot.'
+				
 		}, options);
 		
 		this.css('position','relative');
@@ -26,6 +29,19 @@
 			var rightheader = $(document.createElement('div')).attr('id','rightheader');
 			rightheader.css('left',(100-settings.rightWidth)+'%');
 			rightheader.css('background-color','white');
+			
+			var rightheadertable = $(document.createElement('div')).attr('id','rightheadertable');
+			rightheader.append(rightheadertable);
+			var rightheadertablerow = $(document.createElement('div')).attr('id','rightheadertablerow');
+			rightheadertable.append(rightheadertablerow);
+			var rightheadertablecell = $(document.createElement('div')).attr('id','rightheadertablecell');
+			rightheadertablerow.append(rightheadertablecell);
+			rightheadertablecell.css('font-style','italic');
+			rightheadertablecell.css('font-weight','bold');
+			rightheadertablecell.css('text-align','center');
+			rightheadertablecell.css('vertical-align','middle');
+			rightheadertablecell.text(settings.rightHeaderText);
+			
 			headerrow.append(rightheader);
 			
 			
@@ -54,6 +70,18 @@
 		footerrow.css('top',(100-settings.footerHeight)+'%');
 			var leftfooter = $(document.createElement('div')).attr('id','leftfooter');
 			leftfooter.css('right',(100-settings.leftWidth)+'%');
+			
+			var leftfootertable = $(document.createElement('div')).attr('id','leftfootertable');
+			leftfooter.append(leftfootertable);
+			var leftfootertablerow = $(document.createElement('div')).attr('id','leftfootertablerow');
+			leftfootertable.append(leftfootertablerow);
+			var leftfootertablecell = $(document.createElement('div')).attr('id','leftfootertablecell');
+			leftfootertablerow.append(leftfootertablecell);
+			leftfootertablecell.css('font-style','italic');
+			leftfootertablecell.css('font-weight','bold');
+			leftfootertablecell.css('text-align','center');
+			leftfootertablecell.css('vertical-align','middle');
+			leftfootertablecell.text(settings.leftFooterText);
 			footerrow.append(leftfooter);
 			
 			var footer = $(document.createElement('div')).attr('id','footer');
@@ -107,6 +135,7 @@
 					footercell.attr('class','footertablecell');
 					footercell.css('width',(100/settings.footerData.length)+'%');
 					footercell.css('border-bottom','solid 1px black');
+					footercell.css('font-style','italic');
 					footercell.text(v);
 					footertablerow.append(footercell);
 				});
@@ -121,6 +150,7 @@
 					leftcell.attr('class','leftcell');
 					leftcell.css('height',(100/settings.leftData.length)+'%');
 					leftcell.css('background-color','#D3D3D3');
+					leftcell.css('font-weight','bold');
 					
 
 					var leftcelltable = $(document.createElement('div'));
@@ -146,6 +176,7 @@
 					var rightcell = $(document.createElement('div'));
 					rightcell.attr('class','rightcell');
 					rightcell.css('height',(100/settings.rightData.length)+'%');
+					rightcell.css('font-style','italic');
 					
 					var rightcelltable = $(document.createElement('div'));
 					rightcelltable.attr('class','rightcelltable');
@@ -173,11 +204,11 @@
 					
 					var contentcontenttable = $(document.createElement('div'));
 					contentcontenttable.attr('class','contentcontenttable');
-					if(i%2==0){
-						contentcontenttable.css('background-color','#DDDDDD');
-					}else{
-						contentcontenttable.css('background-color','#FFFF99');
-					}
+//					if(i%2==0){
+//						contentcontenttable.css('background-color','#DDDDDD');
+//					}else{
+//						contentcontenttable.css('background-color','#FFFF99');
+//					}
 					contentcontentrow.append(contentcontenttable);
 									
 					
