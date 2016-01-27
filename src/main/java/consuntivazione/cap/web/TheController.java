@@ -13,7 +13,7 @@ import consuntivazione.cap.vo.ReportEntryVO;
 
 @Controller
 public class TheController {
-	//feature2
+	
 
 	@Autowired
 	private TimeSheetService timeSheetService;
@@ -36,6 +36,6 @@ public class TheController {
 	public void closeCtx() throws Exception{
 		timeSheetService.closeCtx();
 	}
-
+//feature2
 
 }
